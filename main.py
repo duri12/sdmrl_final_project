@@ -16,9 +16,9 @@ register(
 env = gym.make("EnergyTradingEnv-v0")
 
 # Define models
-def train_model(algorithm, env, timesteps, checkpoint_interval, save_path="checkpoints"):
+def train_model(algorithm, env, timesteps, checkpoint_interval, save_path="checkpoints", init_lr=0.003):
     print(f"Training {algorithm.__name__} model...")
-    model = algorithm("MlpPolicy", env, verbose=1)
+    model = algorithm("MlpPolicy", env, verbose=1,learning_rate=init_lr)
     os.makedirs(save_path, exist_ok=True)
 
     for i in range(0, timesteps, checkpoint_interval):

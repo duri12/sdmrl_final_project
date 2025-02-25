@@ -17,7 +17,7 @@ env = gym.make("EnergyTradingEnv-v0")
 
 # Meta-learning training function (PPO with DynaMITE-RL enhancements)
 def train_model_meta(algorithm, env, timesteps=100000, checkpoint_interval=20000, save_path="checkpoints",
-                     init_lr=0.0003):
+                     init_lr=0.003):
     print(f"Training {algorithm.__name__} model with meta-learning (DynaMITE-RL) adaptation...")
     # Initialize model with an initial learning rate
     model = algorithm("MlpPolicy", env, verbose=1, learning_rate=init_lr)

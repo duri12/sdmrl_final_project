@@ -3,7 +3,7 @@ import numpy as np
 from gymnasium.spaces import Box
 
 class EnergyTradingEnv(gym.Env):
-    def __init__(self, storage_capacity=1000.0, peak_demand=1500.0, peak_price=100.0, max_steps=24):
+    def __init__(self, storage_capacity=100.0, peak_demand=150.0, peak_price=10.0, max_steps=24):
         super(EnergyTradingEnv, self).__init__()
 
         # Storage and Market Parameters
