@@ -16,9 +16,9 @@ register(
 env = gym.make("EnergyTradingEnv-v0")
 
 # Define models
-def train_model(algorithm, env, timesteps, checkpoint_interval, save_path="checkpoints", init_lr=0.003):
+def train_model(algorithm, env, timesteps, checkpoint_interval, save_path="checkpoints", init_lr=0.0003):
     print(f"Training {algorithm.__name__} model...")
-    model = algorithm("MlpPolicy", env, verbose=1,learning_rate=init_lr)
+    model = algorithm("MlpPolicy", env, verbose=1, learning_rate=init_lr)
     os.makedirs(save_path, exist_ok=True)
 
     for i in range(0, timesteps, checkpoint_interval):
@@ -31,13 +31,13 @@ def train_model(algorithm, env, timesteps, checkpoint_interval, save_path="check
     return model
 
 # Train four RL models with checkpoints
-ppo_model = train_model(PPO, env, timesteps=500000, checkpoint_interval=100000)
-#a2c_model = train_model(A2C, env, timesteps=30000, checkpoint_interval=5000)
-#sac_model = train_model(SAC, env, timesteps=40000, checkpoint_interval=8000)
-#td3_model = train_model(TD3, env, timesteps=40000, checkpoint_interval=8000)
+#ppo_model = train_model(PPO, env, timesteps=500000, checkpoint_interval=100000, init_lr=0.003)
+#a2c_model = train_model(A2C, env, timesteps=300000, checkpoint_interval=50000, init_lr=0.0001)
+#sac_model = train_model(SAC, env, timesteps=40000, checkpoint_interval=8000, init_lr=0.0003)
+#td3_model = train_model(TD3, env, timesteps=40000, checkpoint_interval=8000, init_lr=0.003)
 
 # Save final models
-ppo_model.save("ppo_energy_trading")
+#ppo_model.save("ppo_energy_trading")
 #a2c_model.save("a2c_energy_trading")
 #sac_model.save("sac_energy_trading")
 #td3_model.save("td3_energy_trading")
@@ -70,10 +70,10 @@ def evaluate_model(model, env, episodes=10):
     return mean_reward, std_reward, rewards
 
 # Evaluate all models
-ppo_perf, ppo_std, ppo_rewards = evaluate_model(ppo_model, env)
-a2c_perf, a2c_std, a2c_rewards = evaluate_model(a2c_model, env)
-sac_perf, sac_std, sac_rewards = evaluate_model(sac_model, env)
-td3_perf, td3_std, td3_rewards = evaluate_model(td3_model, env)
+ppo_perf, ppo_std, ppo_rewards = evaluate_model(ppo_model, env , episodes=24)
+a2c_perf, a2c_std, a2c_rewards = evaluate_model(a2c_model, env, episodes=24)
+sac_perf, sac_std, sac_rewards = evaluate_model(sac_model, env, episodes=24)
+td3_perf, td3_std, td3_rewards = evaluate_model(td3_model, env, episodes=24)
 
 # Visualization
 labels = ["PPO", "A2C", "SAC", "TD3"]
@@ -85,7 +85,7 @@ plt.bar(labels, means, yerr=stds, capsize=5, color=['blue', 'green', 'red', 'pur
 plt.xlabel("Algorithm")
 plt.ylabel("Average Reward")
 plt.title("Comparison of RL Algorithms")
-plt.savefig("rl_algorithm_comparison.png")
+plt.savefig("rl_algorithm_comparison2.png")
 plt.show()
 
 # Print results

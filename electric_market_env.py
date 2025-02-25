@@ -70,7 +70,7 @@ class EnergyTradingEnv(gym.Env):
         self.energy_level = np.clip(self.energy_level + action, 0, self.storage_capacity)
 
         # Calculate profit
-        profit = (energy_used * 0.5) + (market_sale * price * 0.7) - (max(0, demand - energy_used) * 0.3)
+        profit = (energy_used * 0.8) + (market_sale * price * 0.9) - (max(0, demand - energy_used) * 0.06)
 
         # Check if the episode should terminate
         terminated = self.current_time >= self.max_steps
