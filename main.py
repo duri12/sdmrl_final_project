@@ -31,15 +31,15 @@ def train_model(algorithm, env, timesteps, checkpoint_interval, save_path="check
     return model
 
 # Train four RL models with checkpoints
-#ppo_model = train_model(PPO, env, timesteps=500000, checkpoint_interval=100000, init_lr=0.003)
+ppo_model = train_model(PPO, env, timesteps=500000, checkpoint_interval=100000, init_lr=0.003)
 #a2c_model = train_model(A2C, env, timesteps=300000, checkpoint_interval=50000, init_lr=0.0001)
-#sac_model = train_model(SAC, env, timesteps=40000, checkpoint_interval=8000, init_lr=0.0003)
+sac_model = train_model(SAC, env, timesteps=40000, checkpoint_interval=8000, init_lr=0.0003)
 #td3_model = train_model(TD3, env, timesteps=40000, checkpoint_interval=8000, init_lr=0.003)
 
 # Save final models
-#ppo_model.save("ppo_energy_trading")
+ppo_model.save("ppo_energy_trading")
 #a2c_model.save("a2c_energy_trading")
-#sac_model.save("sac_energy_trading")
+sac_model.save("sac_energy_trading")
 #td3_model.save("td3_energy_trading")
 #print("Final models saved.")
 
