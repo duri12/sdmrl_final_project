@@ -3,7 +3,7 @@ import numpy as np
 from gymnasium.spaces import Box
 
 class EnergyTradingEnv(gym.Env):
-    def __init__(self, storage_capacity=100.0, peak_demand=150.0, peak_price=10.0, max_steps=24):
+    def __init__(self, storage_capacity=100.0, peak_demand=150.0, peak_price=10.0, max_steps=100):
         super(EnergyTradingEnv, self).__init__()
 
         # Storage and Market Parameters
@@ -70,11 +70,11 @@ class EnergyTradingEnv(gym.Env):
         self.energy_level = np.clip(self.energy_level + action, 0, self.storage_capacity)
 
         # Calculate profit
-        profit = (energy_used * 0.8) + (market_sale * price * 0.9) - (max(0, demand - energy_used) * 0.06)
+        profit = (energy_used * 0.8) + (market_sale * price) - (max(0, demand - energy_used) * 0.06)
 
         # Check if the episode should terminate
         terminated = self.current_time >= self.max_steps
-        truncated = False  # You can add additional conditions for truncation if needed.
+        truncated = False
 
         return self._gather_state(), profit, terminated, truncated, {
             "demand_met": energy_used,
