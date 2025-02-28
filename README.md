@@ -13,7 +13,7 @@ This project involves developing and training reinforcement learning (RL) models
   - Ensemble SAC (ESAC)
   - Meta-Learning SAC (MSAC)
   - 
-## Project Structure
+## Project Structure🗂️
 
 - `electric_market_env.py`: Contains the custom environment `EnergyTradingEnv` for the energy trading simulation.
 - `main.py`: Main script for training, saving, loading, and evaluating RL models.
@@ -22,7 +22,7 @@ This project involves developing and training reinforcement learning (RL) models
 - `utils/fix_file_names.py`: Utility script to fix file names in the checkpoints directory.
 - `README.md`: Project documentation.
 
-## Dependencies
+## Dependencies🧩
 
 - Python 3.8+
 - `gymnasium`
@@ -33,7 +33,7 @@ This project involves developing and training reinforcement learning (RL) models
 - `torch`
 - `torchvision`
 
-## Installation
+## Installation⚙️
 
 1. Clone the repository:
     ```sh
@@ -46,7 +46,7 @@ This project involves developing and training reinforcement learning (RL) models
     pip install -r requirements.txt
     ```
 
-## Usage
+## Usage 🚀
 
 ### Training Models
 
