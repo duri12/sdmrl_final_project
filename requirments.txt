@@ -1,0 +1,7 @@
+gymnasium
+numpy
+matplotlib
+stable-baselines3
+seaborn
+torch
+torchvision

@@ -268,7 +268,7 @@ if __name__ == "__main__":
     env = gym.make("EnergyTradingEnv-v0")
 
     # Model training
-    #sn_sac, esac, msac = train_and_evaluate(env)
+    sn_sac, esac, msac = train_and_evaluate(env)
 
     # Model loading
     print("\nLoading trained models...")

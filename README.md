@@ -1,4 +1,4 @@
-# # SDMRL Final Project
+# SDMRL Final Project
 
 ## Project Overview
 
@@ -8,6 +8,9 @@ This project involves developing and training reinforcement learning (RL) models
 
 - `electric_market_env.py`: Contains the custom environment `EnergyTradingEnv` for the energy trading simulation.
 - `main.py`: Main script for training, saving, loading, and evaluating RL models.
+- `part_3.py`: Implements and compares three SAC variants - SN-SAC, ESAC, and MSAC.
+- `plot_learning_prog.py`: Script to plot the learning progression of RL models.
+- `utils/fix_file_names.py`: Utility script to fix file names in the checkpoints directory.
 - `README.md`: Project documentation.
 
 ## Dependencies
@@ -17,6 +20,9 @@ This project involves developing and training reinforcement learning (RL) models
 - `numpy`
 - `matplotlib`
 - `stable-baselines3`
+- `seaborn`
+- `torch`
+- `torchvision`
 
 ## Installation
 
@@ -38,3 +44,15 @@ This project involves developing and training reinforcement learning (RL) models
 To train the RL models, uncomment the training lines in `main.py` and run the script:
 ```sh
 python main.py
+```
+### Evaluating Models
+To evaluate the trained models, run the script:
+```sh
+python main.py 
+```
+
+### Plotting Learning Progression
+To plot the learning progression of RL models, run the script:
+```sh
+python plot_learning_prog.py
+```

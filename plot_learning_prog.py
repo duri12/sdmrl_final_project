@@ -19,17 +19,17 @@ env = gym.make("EnergyTradingEnv-v0")
 
 # Define model checkpoint details
 checkpoint_intervals = {
-    # "PPO": (10000000, 100000),
-    # "A2C": (5000000, 50000),
+    "PPO": (10000000, 100000),
+    "A2C": (5000000, 50000),
     "SAC": (800000, 8000),
-    # "TD3": (800000, 8000),
+    "TD3": (800000, 8000),
     "SN_SAC": (800000, 8000),
     "ESAC": (800000, 8000),
     "MSAC":(800000, 8000),
 }
 
 checkpoint_dir = "checkpoints"
-models = {#"PPO": PPO, "A2C": A2C, "TD3": TD3,
+models = {"PPO": PPO, "A2C": A2C, "TD3": TD3,
           "SAC": StableSAC,"SN_SAC": SAC, "ESAC": SAC, "MSAC": SAC}
 eval_episodes = 100  # Increase sample size for averaging
 

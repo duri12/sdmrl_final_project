@@ -2,6 +2,7 @@ import gymnasium as gym
 import numpy as np
 from gymnasium.spaces import Box
 
+
 class EnergyTradingEnv(gym.Env):
     def __init__(self, storage_capacity=100.0, peak_demand=150.0, peak_price=10.0, max_steps=100):
         super(EnergyTradingEnv, self).__init__()
@@ -84,16 +85,22 @@ class EnergyTradingEnv(gym.Env):
 
     def _gather_state(self):
         # Use the current demand and price for the observation.
-        return np.array([self.energy_level, self._calculate_demand(), self._calculate_price()], dtype=np.float32)
+        return np.array([
+            self.energy_level,
+            self._calculate_demand(),
+            self._calculate_price()
+        ], dtype=np.float32)
 
     def _calculate_demand(self):
         # Example demand function with added noise.
         return 100 * np.exp(-((self.current_time % 24 - 8) ** 2) / (2 * (2 ** 2))) + \
-               120 * np.exp(-((self.current_time % 24 - 18) ** 2) / (2 * (3 ** 2))) + np.random.normal(0, 10)
+               120 * np.exp(-((self.current_time % 24 - 18) ** 2) / (2 * (3 ** 2))) + \
+               np.random.normal(0, 10)
 
     def _calculate_price(self):
         # Example price function with added noise.
-        return 5 + 3 * np.sin(2 * np.pi * (self.current_time % 24) / 24) + np.random.normal(0, 1)
+        return 5 + 3 * np.sin(2 * np.pi * (self.current_time % 24) / 24) + \
+               np.random.normal(0, 1)
 
     def render(self):
         print(
