@@ -1,9 +1,18 @@
 # SDMRL Final Project
 
-## Project Overview
+## Project Overview 📊
 
 This project involves developing and training reinforcement learning (RL) models to optimize energy trading in a simulated market environment. The environment simulates energy demand, price fluctuations, and battery storage management.
 
+**Key Features**:
+- Custom Gymnasium environment simulating electricity market dynamics
+- Implementation of SAC (Soft Actor-Critic) and its variants
+- Comparative analysis of RL algorithms (PPO, SAC,TD3)
+- Advanced generalization techniques:
+  - Spectral Normalization SAC (SN-SAC)
+  - Ensemble SAC (ESAC)
+  - Meta-Learning SAC (MSAC)
+  - 
 ## Project Structure
 
 - `electric_market_env.py`: Contains the custom environment `EnergyTradingEnv` for the energy trading simulation.
